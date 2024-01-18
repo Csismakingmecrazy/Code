@@ -1,0 +1,93 @@
+{
+            int playerTotal = 0;
+            string cardvalue = "";
+            int numofcards;
+            Console.Write("Welcome to the ");
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write("Random Card Generator");
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("How many cards would you like?");
+            numofcards = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < numofcards; i++)
+            {
+                cardvalue = valuegenerator();
+                if (cardvalue == "Jack" || cardvalue == "Queen" || cardvalue == "King")
+                {
+                    playerTotal += 10;
+                }
+                else if (cardvalue == "Ace")
+                {
+                    playerTotal += 11;
+                }
+                else
+                {
+                    playerTotal += int.Parse(cardvalue);
+                }
+
+                Console.WriteLine(cardvalue + " " + suitgenerator());
+
+
+            }
+            Console.WriteLine("Total value of cards:" + playerTotal);
+
+            Console.ReadKey();
+        }
+
+        static string suitgenerator()
+        {
+            string cardsuit = "";
+            int rndNum = rnd.Next(1, 5);
+            if (rndNum == 1)
+            {
+                cardsuit = "Heart";
+            }
+            else if (rndNum == 2)
+            {
+                cardsuit = "Diamond";
+            }
+            else if (rndNum == 3)
+            {
+                cardsuit = "Spade";
+            }
+            else if (rndNum == 4)
+            {
+                cardsuit = "Club";
+            }
+
+            return cardsuit;
+
+        }
+
+        static string valuegenerator()
+        {
+            string cardvalue = "";
+            int rndNum = rnd.Next(1, 14);
+            if (rndNum == 1)
+            {
+                cardvalue = "Ace";
+            }
+            else if (rndNum <= 10)
+            {
+                cardvalue = rndNum.ToString();
+            }
+            else if (rndNum == 11)
+            {
+                cardvalue = "Jack";
+            }
+            else if (rndNum == 12)
+            {
+                cardvalue = "Queen";
+            }
+            else if (rndNum == 13)
+            {
+                cardvalue = "King";
+            }
+
+            return cardvalue;
+        }
+
+    }
